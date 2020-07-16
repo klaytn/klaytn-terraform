@@ -4,7 +4,7 @@ Terraform modules set to create various resources regarding Klaytn. There are 2 
 
 ## Assumptions
 
-- You want to setup Klaytn serivce-chain nodes in AWS
+- You want to setup Klaytn serivce-chain nodes in AWS.
 - You want to setup proper security groups that allow commuication and coordination.
 
 
@@ -15,7 +15,7 @@ Terraform modules set to create various resources regarding Klaytn. There are 2 
 
 
 ## Contributing
-Report issues/questions/feature requests on in the [issues](https://github.com/klaytn/klaytn-terraform/issues/new) section
+Report issues/questions/feature requests on in the [issues](https://github.com/klaytn/klaytn-terraform/issues/new) section.
 
 ## License
-This modules is licensed under the Apache License, Version 2.0. See [LICENSE](https://github.com/klaytn/klaytn-terraform/LICENSE) for full details.
+This modules is licensed under the Apache License, Version 2.0. See [LICENSE](https://github.com/klaytn/klaytn-terraform/blob/master/LICENSE) for full details.

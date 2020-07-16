@@ -74,21 +74,23 @@ It creates SCN, EN instance nodes with [CentOS AMI](https://aws.amazon.com/marke
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| en\_ebs\_volume\_size | EBS volume size to attach EN nodes. Default volume minimum size is indicated in Klaytn Docs | `number` | `500` | no |
-| en\_instance\_count | The number of EN nodes | `number` | `1` | no |
+| aws\_key\_pair\_name | A key pair is used to control login access to EC2 instances | `string` | `"ServiceChain-common"` | no |
+| en\_ebs\_volume\_size | EBS volume size to attach EN nodes. default volume indicate minimum size in klaytn docs | `number` | `500` | no |
+| en\_instance\_count | The Number of EN node | `number` | `1` | no |
 | en\_instance\_type | EN instance node type | `string` | `"m5.2xlarge"` | no |
 | en\_subnet\_ids | A list of subnets to place EN instance nodes. It usually set to public subnet contrary to scn\_subnet\_ids | `list(string)` | n/a | yes |
 | name | Name of every resource's name tag | `string` | `"test"` | no |
 | region | Region where all resources will be created | `string` | `"ap-northeast-2"` | no |
 | scn\_ebs\_volume\_size | EBS volume size to attach SCN nodes | `number` | `50` | no |
-| scn\_instance\_count | The number of SCN nodes | `number` | `4` | no |
+| scn\_instance\_count | The Number of SCN node | `number` | `4` | no |
 | scn\_instance\_type | SCN instance node type | `string` | `"m5.xlarge"` | no |
 | scn\_public\_ip | Whether to create a public IP for the SCN instance nodes. They have public ips by default. EN instance nodes have public IPs | `bool` | `true` | no |
-| scn\_subnet\_ids | A list of subnets to place SCN instance nodes. It could be better set to use a private subnet if you need to run without public IPs | `list(string)` | n/a | yes |
+| scn\_subnet\_ids | A list of subnets to place SCN instance nodes. It could be better set to private subnet if it need to run without public IPs | `list(string)` | n/a | yes |
+| security\_group | Security group name to attach SCN and EN instance nodes | `string` | `"ServiceChain-common"` | no |
 | ssh\_client\_ips | A list of CIDRs to access SCN, EN instance nodes by SSH | `list(string)` | n/a | yes |
-| ssh\_pub\_key | SSH Public key to access SCN instance nodes and EN instance nodes | `string` | n/a | yes |
+| ssh\_pub\_key | SSH Public key to access SCN instance nodes, EN instance nodes | `string` | n/a | yes |
 | tags | A map of tags to add to all resources | `map` | `{}` | no |
-| vpc\_id | VPC id where the SCN and EN instance nodes will be created | `string` | n/a | yes |
+| vpc\_id | VPC id where the SCN, EN instance nodes will be created | `string` | n/a | yes |
 
 ## Outputs
 
