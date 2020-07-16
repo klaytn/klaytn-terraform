@@ -1,9 +1,9 @@
-# terraform-klaytn-service-chain-nodes
+# Klaytn service-chain nodes aws module
 
 A terraform module to create a Klaytn service chain network including SCN nodes and main chain EN nodes. It help you to build infrustcture on AWS. After create instance nodes with this module, you may can install KSCN, KEN with [klaytn-ansible](https://github.com/klaytn/klaytn-ansible) project under Klaytn organization. For more details regarding Klaytn service chains, please refer to [Klaytn Docs](https://docs.klaytn.com/node/service-chain).
 
 ## Usage
-Simply edit [terraform.tfvars](https://github.com/klaytn/klaytn-terraform/service-chain-aws/terraform.tfvars) and fill each elements. Then run `terraform init / plan / apply` to create resources in AWS. 
+Simply edit [terraform.tfvars](https://github.com/klaytn/klaytn-terraform/blob/master/serivce-chain-aws/terraform.tfvars) and fill each elements. Then run `terraform init / plan / apply` to create resources in AWS.
 
 Or you may refer to the example below.
 ```
@@ -96,9 +96,3 @@ It creates SCN, EN instance nodes with [CentOS AMI](https://aws.amazon.com/marke
 |------|-------------|
 | en\_ip\_addr | EN instance nodes' private ip. Helpful when creating an inventory file to use with Ansible. |
 | scn\_ip\_addr | SCN instance nodes' private ip. Helpful when creating an inventory file to use with Ansible. |
-
-## Contributing
-Report issues/questions/feature requests on in the [issues](https://github.com/klaytn/klaytn-terraform/issues/new) section
-
-## License
-This module is licensed under the Apache License, Version 2.0. See [LICENSE](https://github.com/klaytn/klaytn-terraform/service-chain-aws/LICENSE) for full details.
