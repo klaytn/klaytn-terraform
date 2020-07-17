@@ -25,7 +25,7 @@ Or simply edit [terraform.tfvars](https://github.com/klaytn/klaytn-terraform/blo
 
 ## with VPC module example
 
-This module not create network layers such as VPC/Subnet. It could be done with [terraform-aws-vpc module](https://github.com/terraform-aws-modules/terraform-aws-vpc.git) which provide on terraform-aws-modules organization. A example is contained in the [examples/with_vpc](https://github.com/klaytn/klaytn-terraform/tree/master/serivce-chain-aws/examples/with_vpc) directory.
+This module does not create network resourcse such as the VPC/subnet. This could be done with [terraform-aws-vpc module](https://github.com/terraform-aws-modules/terraform-aws-vpc.git) which is provided in the terraform-aws-modules organization. A example is contained in the [examples/with_vpc](https://github.com/klaytn/klaytn-terraform/tree/master/serivce-chain-aws/examples/with_vpc) directory.
 
 
 ## Requirements
