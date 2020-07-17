@@ -20,7 +20,7 @@ module "klaytn-service-chain" {
 }
 ```
 
-Or simply edit [terraform.tfvars](https://github.com/klaytn/klaytn-terraform/blob/master/serivce-chain-aws/terraform.tfvars) and fill each elements. Then run `terraform init / plan / apply` to create resources in AWS.
+Or simply edit [terraform.tfvars](https://github.com/klaytn/klaytn-terraform/blob/master/serivce-chain-aws/terraform.tfvars) and fill each element. Then run `terraform init / plan / apply` to create resources in AWS.
 
 
 ## with VPC module example
