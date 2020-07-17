@@ -5,7 +5,7 @@ A terraform module to create a Klaytn service chain network including SCN nodes 
 
 ## Usage
 
-For example, if your configuration looks like the following:
+You may use the module with the following configuration (for example):
 ```
 module "klaytn-service-chain" {
     source = "github.com/klaytn/klaytn-terraform/serivce-chain-aws"
