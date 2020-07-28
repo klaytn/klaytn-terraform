@@ -1,6 +1,6 @@
 # refer to a resource group
 data "azurerm_resource_group" "en" {
-  name = "${var.resource_group_name}"
+  name = var.resource_group_name
 }
 
 #refer to a subnet
