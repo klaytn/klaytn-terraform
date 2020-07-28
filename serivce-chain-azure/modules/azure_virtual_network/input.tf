@@ -21,13 +21,13 @@ variable "azure_vnet_cidr" {
 
 variable "en_subnet_cidr" {
   type          = "string"
-  description   = "subnet_cidr""
+  description   = "subnet_cidr"
   default       = "[subnet CIDR]"  // Example : "10.0.0.0/24"
 }
 
 variable "scn_subnet_cidr" {
   type          = "string"
-  description   = "subnet_cidr""
+  description   = "subnet_cidr"
   default       = "[subnet CIDR]"  // Example : "10.0.1.0/24"
 }
 
