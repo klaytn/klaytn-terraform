@@ -15,11 +15,6 @@ Change Virtual network values at input.tf of Azure_virtual_network
 Network Security Group is associated to Subnet
 ```
 
-## Usage on existing Virtual Network - (The location of Resource group and Virtual network must be same)
-```
-Refer ./Exsit-Vnet
-```
-
 ## Requirements
 
 | Name | Version |

@@ -1,8 +1,8 @@
 # terraform-klaytn-service-chain-nodes
 
-A terraform module to create klaytn service chain node with Azure Virtual network and VMs
+A terraform to create klaytn service chain node with Azure Virtual network and VMs
 
-## Usage 
+## Usage (The location of Resource group and Virtual network must be same)
 ```
 Chage the values of terraform.tfvar
 
