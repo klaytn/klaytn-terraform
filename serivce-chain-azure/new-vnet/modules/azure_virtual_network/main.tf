@@ -1,5 +1,5 @@
 provider "azurerm" {
-  version   = "=1.28.0"
+  version = "=1.28.0"
 }
 
 resource "azurerm_virtual_network" "VirtualNetwork" {
@@ -47,36 +47,36 @@ resource "azurerm_network_security_rule" "en-ssh" {
   network_security_group_name = azurerm_network_security_group.en.name
 }
 
-  resource "azurerm_network_security_rule" "en-klaytn-tcp1" {
-  name                = "klatn-tcp1"
+resource "azurerm_network_security_rule" "en-klaytn-tcp1" {
+  name                        = "klatn-tcp1"
   resource_group_name         = "${var.azure_resource_group_name}"
-    access                     = "Allow"
-    direction                  = "Inbound"
-    priority                   = 110
-    protocol                   = "*"
-    source_port_range          = "*"
-    source_address_prefix      = "${azurerm_subnet.scn.address_prefix}"
-    destination_port_range     = "50505"
-    destination_address_prefix = "*"
-    network_security_group_name = azurerm_network_security_group.en.name
+  access                      = "Allow"
+  direction                   = "Inbound"
+  priority                    = 110
+  protocol                    = "*"
+  source_port_range           = "*"
+  source_address_prefix       = "${azurerm_subnet.scn.address_prefix}"
+  destination_port_range      = "50505"
+  destination_address_prefix  = "*"
+  network_security_group_name = azurerm_network_security_group.en.name
 }
 
-  resource "azurerm_network_security_rule" "en-klaytn-tcp2" {
-  name                = "klatn-tcp2"
+resource "azurerm_network_security_rule" "en-klaytn-tcp2" {
+  name                        = "klatn-tcp2"
   resource_group_name         = "${var.azure_resource_group_name}"
-    access                     = "Allow"
-    direction                  = "Inbound"
-    priority                   = 120
-    protocol                   = "*"
-    source_port_range          = "*"
-    source_address_prefix      = "${azurerm_subnet.scn.address_prefix}"
-    destination_port_range     = "32323-32324"
-    destination_address_prefix = "*"
-    network_security_group_name = azurerm_network_security_group.en.name
+  access                      = "Allow"
+  direction                   = "Inbound"
+  priority                    = 120
+  protocol                    = "*"
+  source_port_range           = "*"
+  source_address_prefix       = "${azurerm_subnet.scn.address_prefix}"
+  destination_port_range      = "32323-32324"
+  destination_address_prefix  = "*"
+  network_security_group_name = azurerm_network_security_group.en.name
 }
 
 resource "azurerm_subnet_network_security_group_association" "en" {
-  subnet_id      = azurerm_subnet.en.id
+  subnet_id                 = azurerm_subnet.en.id
   network_security_group_id = azurerm_network_security_group.en.id
 }
 
@@ -102,35 +102,35 @@ resource "azurerm_network_security_rule" "scn-ssh" {
   network_security_group_name = azurerm_network_security_group.scn.name
 }
 
-  resource "azurerm_network_security_rule" "scn-klaytn-tcp1" {
-  name                = "klatn-tcp1"
+resource "azurerm_network_security_rule" "scn-klaytn-tcp1" {
+  name                        = "klatn-tcp1"
   resource_group_name         = "${var.azure_resource_group_name}"
-    access                     = "Allow"
-    direction                  = "Inbound"
-    priority                   = 110
-    protocol                   = "*"
-    source_port_range          = "*"
-    source_address_prefix      = "${azurerm_subnet.en.address_prefix}"
-    destination_port_range     = "50505"
-    destination_address_prefix = "*"
-    network_security_group_name = azurerm_network_security_group.scn.name
+  access                      = "Allow"
+  direction                   = "Inbound"
+  priority                    = 110
+  protocol                    = "*"
+  source_port_range           = "*"
+  source_address_prefix       = "${azurerm_subnet.en.address_prefix}"
+  destination_port_range      = "50505"
+  destination_address_prefix  = "*"
+  network_security_group_name = azurerm_network_security_group.scn.name
 }
 
-  resource "azurerm_network_security_rule" "scn-klaytn-tcp2" {
-  name                = "klatn-tcp2"
+resource "azurerm_network_security_rule" "scn-klaytn-tcp2" {
+  name                        = "klatn-tcp2"
   resource_group_name         = "${var.azure_resource_group_name}"
-    access                     = "Allow"
-    direction                  = "Inbound"
-    priority                   = 120
-    protocol                   = "*"
-    source_port_range          = "*"
-    source_address_prefix      = "${azurerm_subnet.en.address_prefix}"
-    destination_port_range     = "32323-32324"
-    destination_address_prefix = "*"
-    network_security_group_name = azurerm_network_security_group.scn.name
+  access                      = "Allow"
+  direction                   = "Inbound"
+  priority                    = 120
+  protocol                    = "*"
+  source_port_range           = "*"
+  source_address_prefix       = "${azurerm_subnet.en.address_prefix}"
+  destination_port_range      = "32323-32324"
+  destination_address_prefix  = "*"
+  network_security_group_name = azurerm_network_security_group.scn.name
 }
 
 resource "azurerm_subnet_network_security_group_association" "scn" {
-  subnet_id      = azurerm_subnet.scn.id
+  subnet_id                 = azurerm_subnet.scn.id
   network_security_group_id = azurerm_network_security_group.scn.id
 }

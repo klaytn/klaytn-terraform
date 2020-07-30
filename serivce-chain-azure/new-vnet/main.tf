@@ -1,11 +1,11 @@
 provider "azurerm" {
-  version   = "=1.28.0"
+  version = "=1.28.0"
 }
 
 
 resource "azurerm_resource_group" "resourceGroup" {
-  name      = "${var.azure_rg_name}"
-  location  = "${var.azure_location}"
+  name     = "${var.azure_rg_name}"
+  location = "${var.azure_location}"
 }
 
 module "azure_virtual_network" {

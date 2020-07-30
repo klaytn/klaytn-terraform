@@ -1,11 +1,11 @@
 variable "resource_group_name" {
-  type          = "string"
-  description   = "Resource group name"
+  type        = "string"
+  description = "Resource group name"
 }
 
 variable "vm_prefix" {
-  type          = "string"
-  description   = "Name prifix"
+  type        = "string"
+  description = "Name prifix"
 }
 
 
@@ -39,28 +39,28 @@ variable "scn_data_disk_size_gb" {
 
 
 variable "en_subnet_name" {
-  type          = "string"
-  description   = "en_subnet_name"
+  type        = "string"
+  description = "en_subnet_name"
 }
 
-variable "scn_subnet_name"" {
-  type          = "string"
-  description   = "scn_subnet_name"
+variable "scn_subnet_name" {
+  type        = "string"
+  description = "scn_subnet_name"
 }
 
 variable "vnet_name" {
-  type          = "string"
-  description   = "vnetnet_name"
+  type        = "string"
+  description = "vnetnet_name"
 }
 
 variable "admin_username" {
-  type          = "string"
-  description   = "account"
+  type        = "string"
+  description = "account"
 }
 
 variable "ssh_key" {
-  type          = "string"
-  description   = "SSH public Key"
+  type        = "string"
+  description = "SSH public Key"
 }
 
 variable "tags" {

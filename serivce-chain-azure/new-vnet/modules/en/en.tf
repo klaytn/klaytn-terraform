@@ -1,9 +1,9 @@
 provider "azurerm" {
-  version   = "=1.28.0"
+  version = "=1.28.0"
 }
 
 resource "azurerm_public_ip" "en-Pip" {
-  count               =  var.en_vm_count
+  count               = var.en_vm_count
   name                = "${var.vm_prefix}-en-${count.index + 1}-pip"
   location            = "${var.azure_location}"
   resource_group_name = "${var.azure_resource_group_name}"
@@ -11,16 +11,16 @@ resource "azurerm_public_ip" "en-Pip" {
 }
 
 resource "azurerm_network_interface" "en" {
-  count               =  var.en_vm_count
-  name                  = "${var.vm_prefix}-en-${count.index + 1}-nic"
-  location              = "${var.azure_location}"
-  resource_group_name   = "${var.azure_resource_group_name}"
+  count               = var.en_vm_count
+  name                = "${var.vm_prefix}-en-${count.index + 1}-nic"
+  location            = "${var.azure_location}"
+  resource_group_name = "${var.azure_resource_group_name}"
 
   ip_configuration {
     name                          = "${var.vm_prefix}-en-${count.index + 1}-ip"
     subnet_id                     = "${local.subnet_id}"
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id  = "${azurerm_public_ip.en-Pip[count.index].id}"
+    public_ip_address_id          = "${azurerm_public_ip.en-Pip[count.index].id}"
   }
 }
 
@@ -32,11 +32,11 @@ resource "azurerm_virtual_machine" "en" {
   resource_group_name   = "${var.azure_resource_group_name}"
   network_interface_ids = ["${azurerm_network_interface.en[count.index].id}"]
   vm_size               = "${local.vm_size}"
-  
+
   tags = merge(var.tags, {
-      Name = "${var.vm_prefix}-en-${count.index + 1}"
-     }
-     )
+    Name = "${var.vm_prefix}-en-${count.index + 1}"
+    }
+  )
 
   storage_image_reference {
     publisher = "OpenLogic"
@@ -44,7 +44,7 @@ resource "azurerm_virtual_machine" "en" {
     sku       = "7_8"
     version   = "latest"
   }
-  
+
   storage_os_disk {
     name              = "${var.vm_prefix}-en-${count.index + 1}-os"
     caching           = "ReadWrite"
@@ -60,28 +60,28 @@ resource "azurerm_virtual_machine" "en" {
 
   os_profile_linux_config {
     disable_password_authentication = true
-          
-      ssh_keys {
+
+    ssh_keys {
       path     = "/home/${local.admin}/.ssh/authorized_keys"
       key_data = "${file("${var.ssh_key}")}"
     }
   }
 }
 
-  resource "azurerm_managed_disk" "en_disk" {
-  count                =  var.en_vm_count  
+resource "azurerm_managed_disk" "en_disk" {
+  count                = var.en_vm_count
   name                 = "${var.vm_prefix}-en-${count.index + 1}-data"
-  location              = "${var.azure_location}"
+  location             = "${var.azure_location}"
   create_option        = "Empty"
   disk_size_gb         = "${var.en_data_disk_size_gb}"
   resource_group_name  = "${var.azure_resource_group_name}"
   storage_account_type = "Premium_LRS"
-  }
+}
 
-    resource "azurerm_virtual_machine_data_disk_attachment" "en_disk" {
-  count              = var.en_vm_count  
+resource "azurerm_virtual_machine_data_disk_attachment" "en_disk" {
+  count              = var.en_vm_count
   virtual_machine_id = azurerm_virtual_machine.en[count.index].id
   managed_disk_id    = azurerm_managed_disk.en_disk[count.index].id
   lun                = 0
   caching            = "None"
-  }
+}
