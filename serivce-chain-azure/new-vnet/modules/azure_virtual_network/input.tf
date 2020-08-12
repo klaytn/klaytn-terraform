@@ -32,7 +32,7 @@ variable "scn_subnet_cidr" {
 }
 
 locals {
-  vnet_cidr       = "${var.azure_vnet_cidr}"
-  en_subnet_cidr  = "${var.en_subnet_cidr}"
-  scn_subnet_cidr = "${var.scn_subnet_cidr}"
+  vnet_cidr       = var.azure_vnet_cidr
+  en_subnet_cidr  = var.en_subnet_cidr
+  scn_subnet_cidr = var.scn_subnet_cidr
 }

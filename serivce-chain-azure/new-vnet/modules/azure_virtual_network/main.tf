@@ -4,20 +4,20 @@ provider "azurerm" {
 
 resource "azurerm_virtual_network" "VirtualNetwork" {
   name                = "${var.vm_prefix}-vNet"
-  location            = "${var.azure_location}"
-  resource_group_name = "${var.azure_resource_group_name}"
+  location            = var.azure_location
+  resource_group_name = var.azure_resource_group_name
   address_space       = ["${local.vnet_cidr}"]
 }
 
 resource "azurerm_subnet" "en" {
   name                 = "${var.vm_prefix}-en-Subnet"
-  resource_group_name  = "${var.azure_resource_group_name}"
+  resource_group_name  = var.azure_resource_group_name
   virtual_network_name = "${azurerm_virtual_network.VirtualNetwork.name}"
   address_prefix       = "${local.en_subnet_cidr}"
 }
 resource "azurerm_subnet" "scn" {
   name                 = "${var.vm_prefix}-scn-Subnet"
-  resource_group_name  = "${var.azure_resource_group_name}"
+  resource_group_name  = var.azure_resource_group_name
   virtual_network_name = "${azurerm_virtual_network.VirtualNetwork.name}"
   address_prefix       = "${local.scn_subnet_cidr}"
 }
@@ -28,13 +28,13 @@ data "http" "myip" {
 
 resource "azurerm_network_security_group" "en" {
   name                = "${var.vm_prefix}-en-NSG"
-  location            = "${var.azure_location}"
-  resource_group_name = "${var.azure_resource_group_name}"
+  location            = var.azure_location
+  resource_group_name = var.azure_resource_group_name
 }
 
 resource "azurerm_network_security_rule" "en-ssh" {
   name                        = "ssh"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   description                 = "Allow remote protocol in from all locations"
   priority                    = 100
   direction                   = "Inbound"
@@ -49,7 +49,7 @@ resource "azurerm_network_security_rule" "en-ssh" {
 
 resource "azurerm_network_security_rule" "en-klaytn-tcp1" {
   name                        = "klatn-tcp1"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   access                      = "Allow"
   direction                   = "Inbound"
   priority                    = 110
@@ -63,7 +63,7 @@ resource "azurerm_network_security_rule" "en-klaytn-tcp1" {
 
 resource "azurerm_network_security_rule" "en-klaytn-tcp2" {
   name                        = "klatn-tcp2"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   access                      = "Allow"
   direction                   = "Inbound"
   priority                    = 120
@@ -83,13 +83,13 @@ resource "azurerm_subnet_network_security_group_association" "en" {
 
 resource "azurerm_network_security_group" "scn" {
   name                = "${var.vm_prefix}-scn-NSG"
-  location            = "${var.azure_location}"
-  resource_group_name = "${var.azure_resource_group_name}"
+  location            = var.azure_location
+  resource_group_name = var.azure_resource_group_name
 }
 
 resource "azurerm_network_security_rule" "scn-ssh" {
   name                        = "ssh"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   description                 = "Allow remote protocol in from all locations"
   priority                    = 100
   direction                   = "Inbound"
@@ -104,7 +104,7 @@ resource "azurerm_network_security_rule" "scn-ssh" {
 
 resource "azurerm_network_security_rule" "scn-klaytn-tcp1" {
   name                        = "klatn-tcp1"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   access                      = "Allow"
   direction                   = "Inbound"
   priority                    = 110
@@ -118,7 +118,7 @@ resource "azurerm_network_security_rule" "scn-klaytn-tcp1" {
 
 resource "azurerm_network_security_rule" "scn-klaytn-tcp2" {
   name                        = "klatn-tcp2"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   access                      = "Allow"
   direction                   = "Inbound"
   priority                    = 120

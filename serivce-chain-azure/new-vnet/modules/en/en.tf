@@ -5,16 +5,16 @@ provider "azurerm" {
 resource "azurerm_public_ip" "en-Pip" {
   count               = var.en_vm_count
   name                = "${var.vm_prefix}-en-${count.index + 1}-pip"
-  location            = "${var.azure_location}"
-  resource_group_name = "${var.azure_resource_group_name}"
+  location            = var.azure_location
+  resource_group_name = var.azure_resource_group_name
   allocation_method   = "Static"
 }
 
 resource "azurerm_network_interface" "en" {
   count               = var.en_vm_count
   name                = "${var.vm_prefix}-en-${count.index + 1}-nic"
-  location            = "${var.azure_location}"
-  resource_group_name = "${var.azure_resource_group_name}"
+  location            = var.azure_location
+  resource_group_name = var.azure_resource_group_name
 
   ip_configuration {
     name                          = "${var.vm_prefix}-en-${count.index + 1}-ip"
@@ -28,8 +28,8 @@ resource "azurerm_network_interface" "en" {
 resource "azurerm_virtual_machine" "en" {
   count                 = var.en_vm_count
   name                  = "${var.vm_prefix}-en-${count.index + 1}"
-  location              = "${var.azure_location}"
-  resource_group_name   = "${var.azure_resource_group_name}"
+  location              = var.azure_location
+  resource_group_name   = var.azure_resource_group_name
   network_interface_ids = ["${azurerm_network_interface.en[count.index].id}"]
   vm_size               = "${local.vm_size}"
 
@@ -71,10 +71,10 @@ resource "azurerm_virtual_machine" "en" {
 resource "azurerm_managed_disk" "en_disk" {
   count                = var.en_vm_count
   name                 = "${var.vm_prefix}-en-${count.index + 1}-data"
-  location             = "${var.azure_location}"
+  location             = var.azure_location
   create_option        = "Empty"
-  disk_size_gb         = "${var.en_data_disk_size_gb}"
-  resource_group_name  = "${var.azure_resource_group_name}"
+  disk_size_gb         = var.en_data_disk_size_gb
+  resource_group_name  = var.azure_resource_group_name
   storage_account_type = "Premium_LRS"
 }
 

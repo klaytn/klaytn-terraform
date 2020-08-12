@@ -1,13 +1,13 @@
 # refer to a resource group
 data "azurerm_resource_group" "scn" {
-  name = "${var.resource_group_name}"
+  name = var.resource_group_name
 }
 
 #refer to a subnet
 data "azurerm_subnet" "scn" {
-  name                 = "${var.scn_subnet_name}"
-  virtual_network_name = "${var.vnet_name}"
-  resource_group_name  = "${var.resource_group_name}"
+  name                 = var.scn_subnet_name
+  virtual_network_name = var.vnet_name
+  resource_group_name  = var.resource_group_name
 }
 
 # create a network interface
@@ -34,12 +34,12 @@ resource "azurerm_subnet_network_security_group_association" "en" {
 resource "azurerm_network_security_group" "scn" {
   name                = "${var.vm_prefix}-scn-NSG"
   location            = "${var.azure_location}"
-  resource_group_name = "${var.azure_resource_group_name}"
+  resource_group_name = var.azure_resource_group_name
 }
 
 resource "azurerm_network_security_rule" "scn-ssh" {
   name                        = "ssh"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   description                 = "Allow remote protocol in from all locations"
   priority                    = 100
   direction                   = "Inbound"
@@ -54,7 +54,7 @@ resource "azurerm_network_security_rule" "scn-ssh" {
 
 resource "azurerm_network_security_rule" "scn-klaytn-tcp1" {
   name                        = "klatn-tcp1"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   access                      = "Allow"
   direction                   = "Inbound"
   priority                    = 110
@@ -68,7 +68,7 @@ resource "azurerm_network_security_rule" "scn-klaytn-tcp1" {
 
 resource "azurerm_network_security_rule" "scn-klaytn-tcp2" {
   name                        = "klatn-tcp2"
-  resource_group_name         = "${var.azure_resource_group_name}"
+  resource_group_name         = var.azure_resource_group_name
   access                      = "Allow"
   direction                   = "Inbound"
   priority                    = 120
@@ -102,7 +102,7 @@ resource "azurerm_virtual_machine" "scn" {
 
   os_profile {
     computer_name  = "${var.vm_prefix}-scn-${count.index + 1}"
-    admin_username = "${var.admin_username}"
+    admin_username = var.admin_username
   }
 
   os_profile_linux_config {
@@ -133,7 +133,7 @@ resource "azurerm_managed_disk" "scn" {
   name                 = "${var.vm_prefix}-scn-${count.index + 1}-data"
   location             = "${data.azurerm_resource_group.scn.location}"
   create_option        = "Empty"
-  disk_size_gb         = "${var.scn_data_disk_size_gb}"
+  disk_size_gb         = var.scn_data_disk_size_gb
   resource_group_name  = "${data.azurerm_resource_group.scn.name}"
   storage_account_type = "Premium_LRS"
 }

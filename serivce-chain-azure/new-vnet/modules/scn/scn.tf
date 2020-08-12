@@ -6,8 +6,8 @@ provider "azurerm" {
 resource "azurerm_network_interface" "scn" {
   count               = var.scn_vm_count
   name                = "${var.vm_prefix}-scn-${count.index + 1}-nic"
-  location            = "${var.azure_location}"
-  resource_group_name = "${var.azure_resource_group_name}"
+  location            = var.azure_location
+  resource_group_name = var.azure_resource_group_name
 
   ip_configuration {
     name                          = "${var.vm_prefix}-scn-${count.index + 1}-ip"
@@ -19,8 +19,8 @@ resource "azurerm_network_interface" "scn" {
 resource "azurerm_virtual_machine" "scn" {
   count                 = var.scn_vm_count
   name                  = "${var.vm_prefix}-scn-${count.index + 1}"
-  location              = "${var.azure_location}"
-  resource_group_name   = "${var.azure_resource_group_name}"
+  location              = var.azure_location
+  resource_group_name   = var.azure_resource_group_name
   network_interface_ids = ["${azurerm_network_interface.scn[count.index].id}"]
   vm_size               = "${local.vm_size}"
 
@@ -62,10 +62,10 @@ resource "azurerm_virtual_machine" "scn" {
 resource "azurerm_managed_disk" "scn-disk" {
   count                = var.scn_vm_count
   name                 = "${var.vm_prefix}-scn-${count.index + 1}-data"
-  location             = "${var.azure_location}"
+  location             = var.azure_location
   create_option        = "Empty"
-  disk_size_gb         = "${var.scn_data_disk_size_gb}"
-  resource_group_name  = "${var.azure_resource_group_name}"
+  disk_size_gb         = var.scn_data_disk_size_gb
+  resource_group_name  = var.azure_resource_group_name
   storage_account_type = "Premium_LRS"
 }
 
