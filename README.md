@@ -11,7 +11,7 @@ Terraform modules set to create various resources regarding Klaytn. There are 2 
 ## Modules
 
 - [service-chain-aws](https://github.com/klaytn/klaytn-terraform/tree/master/serivce-chain-aws)
-- service-chain-azure(To-be)
+- [service-chain-azure](https://github.com/klaytn/klaytn-terraform/tree/master/serivce-chain-azure)
 
 
 ## Contributing
