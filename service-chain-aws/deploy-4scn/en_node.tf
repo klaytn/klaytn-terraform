@@ -1,6 +1,16 @@
+data "aws_ami" "en_ami" {
+  most_recent = true
+  owners      = [428948643293]
+
+  filter {
+    name   = "name"
+    values = ["AwsBackup_i-0268f8e922a13c767_*"]
+  }
+}
+
 resource "aws_instance" "en" {
   count                       = var.en_instance_count
-  ami                         = data.aws_ami.node_ami.id
+  ami                         = data.aws_ami.en_ami.id
   instance_type               = var.en_instance_type
   vpc_security_group_ids      = [aws_security_group.common.id]
   associate_public_ip_address = true
@@ -19,23 +29,6 @@ resource "aws_instance" "en" {
     # Don't replace the node when the AMI is updated -- it can simply be upgraded separately
     ignore_changes = [ami]
   }
-}
-
-resource "aws_ebs_volume" "en_data" {
-  count             = var.en_instance_count
-  availability_zone = aws_instance.en[count.index].availability_zone
-  size              = var.en_ebs_volume_size
-  type              = "gp2"
-  tags = merge(var.tags, {
-    Name = "${var.name}-en"
-  })
-}
-
-resource "aws_volume_attachment" "en_data" {
-  count       = var.en_instance_count
-  volume_id   = aws_ebs_volume.en_data[count.index].id
-  instance_id = aws_instance.en[count.index].id
-  device_name = "/dev/sdb"
 }
 
 resource "aws_eip" "en" {
