@@ -7,7 +7,7 @@
 # review when someone opens a pull request.
 #*       @global-owner1 @global-owner2
 
-*       @whoisxx @aluminous @markyim-gx @joosangkim @jaydenhur @klaytn/gx_devops
+*       @markyim-krust @iv0rish @jaydenhur @klaytn/klaytn_devops
 
 # Order is important; the last matching pattern takes the most
 # precedence. When someone opens a pull request that only
