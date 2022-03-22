@@ -22,7 +22,7 @@ resource "aws_instance" "en" {
   }
 
   tags = merge(var.tags, {
-    Name = "${var.name}-en"
+    Name = "${var.name}-en-${count.index + 1}"
   })
 
   lifecycle {
