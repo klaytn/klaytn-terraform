@@ -185,7 +185,14 @@ resource "aws_security_group_rule" "ingress_en_eip_network_udp" {
   cidr_blocks              = ["${aws_eip.en[count.index].public_ip}/32"]
 }
 
-
+resource "aws_security_group_rule" "ingress_network_rpc" {
+  security_group_id = aws_security_group.common.id
+  type              = "ingress"
+  from_port         = 8551
+  to_port           = 8551
+  protocol          = "tcp"
+  cidr_blocks       = var.ssh_client_ips
+}
 
 resource "aws_security_group_rule" "egress" {
   security_group_id = aws_security_group.common.id
