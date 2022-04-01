@@ -163,6 +163,12 @@ variable "scn_public_ip" {
   default     = true
 }
 
+variable "cn_public_ip" {
+  description = "Whether to create a public IP for the SCN instance nodes. They have public ips by default. EN instance nodes have public IPs"
+  type        = bool
+  default     = true
+}
+
 variable "security_group" {
   description = "Security group name to attach SCN and EN instance nodes"
   type        = string
