@@ -4,7 +4,7 @@ data "aws_ami" "en_ami" {
 
   filter {
     name   = "name"
-    values = ["AwsBackup_i-0268f8e922a13c767_*"]
+    values = ["baobab-clean-en-ami-*"]
   }
 }
 
