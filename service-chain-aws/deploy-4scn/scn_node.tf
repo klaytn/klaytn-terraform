@@ -125,6 +125,75 @@ resource "aws_security_group_rule" "ingress_anchoring_network_tcp" {
   source_security_group_id = aws_security_group.common.id
 }
 
+resource "aws_security_group_rule" "ingress_scn_eip_network_tcp" {
+  count                    = var.scn_public_ip ? var.scn_instance_count : 0
+  security_group_id        = aws_security_group.common.id
+  type                     = "ingress"
+  from_port                = 32323
+  to_port                  = 32324
+  protocol                 = "tcp"
+  cidr_blocks              = ["${aws_eip.scn[count.index].public_ip}/32"]
+}
+
+resource "aws_security_group_rule" "ingress_scn_eip_network_udp" {
+  count                    = var.scn_public_ip ? var.scn_instance_count : 0
+  security_group_id        = aws_security_group.common.id
+  type                     = "ingress"
+  from_port                = 32323
+  to_port                  = 32323
+  protocol                 = "udp"
+  cidr_blocks              = ["${aws_eip.scn[count.index].public_ip}/32"]
+}
+
+resource "aws_security_group_rule" "ingress_scn_anchoring_eip_tcp" {
+  count                    = var.scn_public_ip ? var.scn_instance_count : 0
+  security_group_id        = aws_security_group.common.id
+  type                     = "ingress"
+  from_port                = 50505
+  to_port                  = 50506
+  protocol                 = "tcp"
+  cidr_blocks              = ["${aws_eip.scn[count.index].public_ip}/32"]
+}
+
+resource "aws_security_group_rule" "ingress_en_anchoring_eip_tcp" {
+  count                    = var.en_instance_count
+  security_group_id        = aws_security_group.common.id
+  type                     = "ingress"
+  from_port                = 50505
+  to_port                  = 50506
+  protocol                 = "tcp"
+  cidr_blocks              = ["${aws_eip.en[count.index].public_ip}/32"]
+}
+
+resource "aws_security_group_rule" "ingress_en_eip_network_tcp" {
+  count                    = var.en_instance_count
+  security_group_id        = aws_security_group.common.id
+  type                     = "ingress"
+  from_port                = 32323
+  to_port                  = 32324
+  protocol                 = "tcp"
+  cidr_blocks              = ["${aws_eip.en[count.index].public_ip}/32"]
+}
+
+resource "aws_security_group_rule" "ingress_en_eip_network_udp" {
+  count                    = var.en_instance_count
+  security_group_id        = aws_security_group.common.id
+  type                     = "ingress"
+  from_port                = 32323
+  to_port                  = 32323
+  protocol                 = "udp"
+  cidr_blocks              = ["${aws_eip.en[count.index].public_ip}/32"]
+}
+
+resource "aws_security_group_rule" "ingress_network_rpc" {
+  security_group_id = aws_security_group.common.id
+  type              = "ingress"
+  from_port         = 8551
+  to_port           = 8551
+  protocol          = "tcp"
+  cidr_blocks       = var.ssh_client_ips
+}
+
 resource "aws_security_group_rule" "egress" {
   security_group_id = aws_security_group.common.id
   type              = "egress"
