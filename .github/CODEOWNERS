@@ -8,6 +8,8 @@
 #*       @global-owner1 @global-owner2
 
 *       @markyim-krust @iv0rish @jaydenhur @klaytn/klaytn_devops
+# ServiceChain part
+*       @henry-will @2dvorak
 
 # Order is important; the last matching pattern takes the most
 # precedence. When someone opens a pull request that only
