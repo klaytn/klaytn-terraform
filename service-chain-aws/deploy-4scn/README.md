@@ -20,7 +20,7 @@ module "klaytn-service-chain" {
 }
 ```
 
-Or simply edit [terraform.tfvars](https://github.com/klaytn/klaytn-terraform/blob/master/serivce-chain-aws/terraform.tfvars) and fill each element. Then run `terraform init / plan / apply` to create resources in AWS.
+Or simply edit [terraform.tfvars](https://github.com/klaytn/klaytn-terraform/blob/master/serivce-chain-aws/deploy-4scn/terraform.tfvars) and fill each element. Then run `terraform init / plan / apply` to create resources in AWS.
 
 
 ## with VPC module example
@@ -54,6 +54,10 @@ It creates SCN, EN instance nodes with [CentOS AMI](https://aws.amazon.com/marke
 | en\_instance\_count | The Number of EN node | `number` | `1` | no |
 | en\_instance\_type | EN instance node type | `string` | `"m5.2xlarge"` | no |
 | en\_subnet\_ids | A list of subnets to place EN instance nodes. It usually set to public subnet contrary to scn\_subnet\_ids | `list(string)` | n/a | yes |
+| grafana\_ebs\_volume\_size | EBS volume size to attach grafana nodes. Default volume indicate minimum size in klaytn docs | `number` | `500` | no |
+| grafana\_instance\_count | The Number of grafana node | `number` | `1` | no |
+| grafana\_instance\_type | Grafana instance node type | `string` | `"m5.xlarge"` | no |
+| grafana\_subnet\_ids | A list of subnets to place grafana instance nodes. It should be set to public subnet in order to access the grafana web UI via browser | `list(string)` | n/a | yes |
 | name | Name of every resource's name tag | `string` | `"test"` | no |
 | region | Region where all resources will be created | `string` | `"ap-northeast-2"` | no |
 | scn\_ebs\_volume\_size | EBS volume size to attach SCN nodes | `number` | `50` | no |
