@@ -67,7 +67,7 @@ It creates SCN, EN instance nodes with [CentOS AMI](https://aws.amazon.com/marke
 | scn\_subnet\_ids | A list of subnets to place SCN instance nodes. It could be better set to private subnet if it need to run without public IPs | `list(string)` | n/a | yes |
 | security\_group | Security group name to attach SCN and EN instance nodes | `string` | `"ServiceChain-common"` | no |
 | ssh\_client\_ips | A list of CIDRs to access SCN, EN instance nodes by SSH | `list(string)` | n/a | yes |
-| ssh\_pub\_key | SSH Public key to access SCN instance nodes, EN instance nodes | `string` | n/a | yes |
+| ssh\_pub\_key | SSH Public key to access SCN, EN, grafana instance nodes | `string` | n/a | yes |
 | tags | A map of tags to add to all resources | `map` | `{}` | no |
 | vpc\_id | VPC id where the SCN, EN instance nodes will be created | `string` | n/a | yes |
 
