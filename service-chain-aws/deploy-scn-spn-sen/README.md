@@ -57,6 +57,8 @@ It creates SCN, EN instance nodes with [CentOS AMI](https://aws.amazon.com/marke
 | name | Name of every resource's name tag | `string` | `"test"` | no |
 | region | Region where all resources will be created | `string` | `"ap-northeast-2"` | no |
 | scn\_ebs\_volume\_size | EBS volume size to attach SCN nodes | `number` | `50` | no |
+| spn\_ebs\_volume\_size | EBS volume size to attach SPN nodes | `number` | `50` | no |
+| sen\_ebs\_volume\_size | EBS volume size to attach SEN nodes | `number` | `50` | no |
 | scn\_instance\_count | The Number of SCN node | `number` | `4` | no |
 | spn\_instance\_count | The Number of SPN node | `number` | `2` | no |
 | sen\_instance\_count | The Number of SEN node | `number` | `2` | no |
