@@ -58,9 +58,15 @@ It creates SCN, EN instance nodes with [CentOS AMI](https://aws.amazon.com/marke
 | region | Region where all resources will be created | `string` | `"ap-northeast-2"` | no |
 | scn\_ebs\_volume\_size | EBS volume size to attach SCN nodes | `number` | `50` | no |
 | scn\_instance\_count | The Number of SCN node | `number` | `4` | no |
+| spn\_instance\_count | The Number of SPN node | `number` | `2` | no |
+| sen\_instance\_count | The Number of SEN node | `number` | `2` | no |
 | scn\_instance\_type | SCN instance node type | `string` | `"m5.xlarge"` | no |
+| spn\_instance\_type | SPN instance node type | `string` | `"m5.xlarge"` | no |
+| sen\_instance\_type | SEN instance node type | `string` | `"m5.xlarge"` | no |
 | scn\_public\_ip | Whether to create a public IP for the SCN instance nodes. They have public ips by default. EN instance nodes have public IPs | `bool` | `true` | no |
 | scn\_subnet\_ids | A list of subnets to place SCN instance nodes. It could be better set to private subnet if it need to run without public IPs | `list(string)` | n/a | yes |
+| spn\_subnet\_ids | A list of subnets to place SPN instance nodes. It should be set to public subnet because it need to run with public IPs | `list(string)` | n/a | yes |
+| sen\_subnet\_ids | A list of subnets to place SEN instance nodes. It should be set to public subnet because it need to run with public IPs | `list(string)` | n/a | yes |
 | security\_group | Security group name to attach SCN and EN instance nodes | `string` | `"ServiceChain-common"` | no |
 | ssh\_client\_ips | A list of CIDRs to access SCN, EN instance nodes by SSH | `list(string)` | n/a | yes |
 | ssh\_pub\_key | SSH Public key to access SCN instance nodes, EN instance nodes | `string` | n/a | yes |
@@ -72,5 +78,9 @@ It creates SCN, EN instance nodes with [CentOS AMI](https://aws.amazon.com/marke
 
 | Name | Description |
 |------|-------------|
-| en\_ip\_addr | EN instance nodes' private ip. Helpful when creating an inventory file to use with Ansible. |
-| scn\_ip\_addr | SCN instance nodes' private ip. Helpful when creating an inventory file to use with Ansible. |
+| en\_private\_ip\_addr | EN instance nodes' private ip. Helpful when creating an inventory file to use with Ansible. |
+| en\_public\_ip\_addr | EN instance nodes' public ip. Helpful when creating an inventory file to use with Ansible. |
+| scn\_private\_ip\_addr | SCN instance nodes' private ip. Helpful when creating an inventory file to use with Ansible. |
+| scn\_public\_ip\_addr | SCN instance nodes' public ip. Helpful when creating an inventory file to use with Ansible. |
+| scn\_public\_ip\_addr | SCN instance nodes' public ip. Helpful when creating an inventory file to use with Ansible. |
+| scn\_public\_ip\_addr | SCN instance nodes' public ip. Helpful when creating an inventory file to use with Ansible. |
