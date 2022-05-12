@@ -4,7 +4,6 @@
 # spn_subnet_ids = ["", ""]   # A list of subnets to place SPN instance nodes. It usually set to public subnet contrary to scn_subnet_ids
 # sen_subnet_ids = ["", ""]   # A list of subnets to place SEN instance nodes. It usually set to public subnet contrary to scn_subnet_ids
 # en_security_group_id = ""   # A EN's security group to anchroing with the ServiceChain
-# en_subnet_ids  = ["", ""]   # A list of subnets to place EN instance nodes. It usually set to public subnet contrary to scn_subnet_ids
 # vpc_id         = ""   # VPC id where the SCN, EN instance nodes will be created
 # ssh_client_ips = [""] # A list of CIDRs to access SCN, EN instance nodes by SSH
 # ssh_pub_key    = ""   # SSH Public key to access SCN instance nodes, EN instance nodes
