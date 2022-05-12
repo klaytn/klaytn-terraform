@@ -15,7 +15,7 @@ variable "sen_instance_count" {
 
 variable "cn_instance_count" {
   description = "The Number of CN node"
-  default     = 2
+  default     = 4
 }
 
 variable "pn_instance_count" {
