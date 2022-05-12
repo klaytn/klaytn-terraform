@@ -134,6 +134,15 @@ resource "aws_security_group_rule" "ingress_l2_en_eip_network_udp" {
   source_security_group_id = var.en_security_group_id
 }
 
+resource "aws_security_group_rule" "ingress_l2_bridge_network_tcp" {
+  security_group_id        = aws_security_group.l2_common_sg.id
+  type                     = "ingress"
+  from_port                = 50505
+  to_port                  = 50506
+  protocol                 = "tcp"
+  source_security_group_id = var.en_security_group_id
+}
+
 resource "aws_security_group_rule" "ingress_l2_network_rpc" {
   security_group_id        = aws_security_group.l2_common_sg.id
   type                     = "ingress"
