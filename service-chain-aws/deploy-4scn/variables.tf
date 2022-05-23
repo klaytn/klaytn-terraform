@@ -8,6 +8,11 @@ variable "en_instance_count" {
   default     = 1
 }
 
+variable "grafana_instance_count" {
+  description = "The Number of grafana node"
+  default     = 1
+}
+
 variable "en_instance_type" {
   description = "EN instance node type"
   default     = "m5.2xlarge"
@@ -18,8 +23,18 @@ variable "scn_instance_type" {
   default     = "m5.xlarge"
 }
 
+variable "grafana_instance_type" {
+  description = "Grafana instance node type"
+  default     = "m5.xlarge"
+}
+
 variable "scn_subnet_ids" {
   description = "A list of subnets to place SCN instance nodes. It could be better set to private subnet if it need to run without public IPs"
+  type        = list(string)
+}
+
+variable "grafana_subnet_ids" {
+  description = "A list of subnets to place grafana instance nodes. It could be better set to private subnet if it need to run without public IPs"
   type        = list(string)
 }
 
@@ -54,6 +69,11 @@ variable "region" {
   description = "Region where all resources will be created"
   default     = "ap-northeast-2"
   type        = string
+}
+
+variable "grafana_ebs_volume_size" {
+  description = "EBS volume size to attach grafana nodes"
+  default     = 50
 }
 
 variable "scn_ebs_volume_size" {

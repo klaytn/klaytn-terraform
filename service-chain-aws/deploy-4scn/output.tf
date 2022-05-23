@@ -14,3 +14,7 @@ output "en_public_ip_addr" {
   description = "EN instance nodes' public ip. It might help create inventory file when it comes to use ansible"
   value       = ["${aws_eip.en.*.public_ip}"]
 }
+output "grafana_public_ip_addr" {
+  description = "Grafana instance nodes' public ip. It might help create inventory file when it comes to use ansible"
+  value       = ["${aws_eip.grafana.*.public_ip}"]
+}
