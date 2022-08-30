@@ -1,10 +1,10 @@
 data "aws_ami" "en_ami" {
   most_recent = true
-  owners      = [428948643293]
+  owners      = [402311685496]
 
   filter {
     name   = "name"
-    values = ["baobab-clean-en-ami-*"]
+    values = ["baobab-clean-full-en-*"]
   }
 }
 
