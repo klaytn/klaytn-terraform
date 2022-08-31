@@ -35,8 +35,6 @@ This module does not create network resourcse such as the VPC/subnet. This could
 | terraform | >= 0.12 |
 | aws | ~> 2.43 |
 
-It creates SCN, EN instance nodes with [CentOS AMI](https://aws.amazon.com/marketplace/pp/Centosorg-CentOS-7-x8664-with-Updates-HVM/B00O7WM7QW#pdp-usage) in AWS marketplace. You need to accept the terms and subscribe before running terraform apply.
-
 
 ## Providers
 
