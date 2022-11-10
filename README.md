@@ -1,3 +1,8 @@
+# Branch name will be changed
+
+We will change the `master` branch to `main` at Nov 1, 2022.
+After change branch policy, please check your local or forked repository settings.
+
 # Klaytn Terraform modules
 Terraform modules set to create various resources regarding Klaytn. There are 2 modules for now which create service-chain nodes in AWS, Azure. The purpose of this repo is to providing various modules that build klaytn nodes easily for demo or production ready environment.
 
